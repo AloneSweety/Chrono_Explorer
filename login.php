@@ -62,7 +62,7 @@
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="login-card">
             <h3 class="mb-4">Login</h3>
-            <form action="register.html" method="post"> <!-- This line is changed -->
+            <form action="register.php" method="post"> <!-- This line is changed -->
                 <div class="form-group mb-3">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
@@ -73,9 +73,9 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Login</button>
                 <div class="login-footer mt-3">
-                    <small>Don't have an account? <a href="register.html">Register here</a></small>
+                    <small>Don't have an account? <a href="register.php">Register here</a></small>
                     <br>
-                    <a href="project.html">HOME</a>
+                    <a href="project.php">HOME</a>
                 </div>
             </form>
         </div>
