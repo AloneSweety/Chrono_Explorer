@@ -165,8 +165,8 @@
             <h1>Chrono Explorer</h1>
             <p><em>Walk Through the Past</em></p>
             <div class="header-buttons">
-                <a href="login.html" class="btn btn-login">Log In</a>
-                <a href="register.html" class="btn btn-signup">Sign Up</a>
+                <a href="login.php" class="btn btn-login">Log In</a>
+                <a href="register.php" class="btn btn-signup">Sign Up</a>
             </div>
         </div>
 
@@ -232,7 +232,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><b>The Arrival of the Portuguese</b></h5>
                         <p class="card-text">Explore how the Portuguese established their control over Sri Lanka starting in 1505.</p>
-                        <a href="lesson.html" class="btn btn-primary">Read More</a>
+                        <a href="lesson.php" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
             </div>
@@ -242,7 +242,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><b>Dutch Influence in Sri Lanka</b></h5>
                         <p class="card-text">Learn about the Dutch takeover from 1658 and their lasting impact on the island.</p>
-                        <a href="lesson.html" class="btn btn-primary">Read More</a>
+                        <a href="lesson.php" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
             </div>
