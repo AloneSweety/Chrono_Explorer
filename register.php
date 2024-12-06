@@ -81,7 +81,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Register</button>
                 <div class="register-footer mt-3">
-                    <small>Already have an account? <a href="login.html">Login here</a></small>
+                    <small>Already have an account? <a href="login.php">Login here</a></small>
                 </div>
             </form>
         </div>
