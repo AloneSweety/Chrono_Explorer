@@ -151,7 +151,7 @@
                         <p>Learn about the Portuguese arrival in Sri Lanka in 1505 and their impact on the island’s culture, politics, and trade.</p>
                     </div>
                     <ul class="breadcrumb-nav">
-                        <li><a href="project.html">Home</a></li>
+                        <li><a href="project.php">Home</a></li>
                         <li>The Arrival of the Portuguese</li>
                         
                     </ul>
