@@ -3,7 +3,7 @@
 session_start();
 
 // Include database connection
-include('db_connection.php');
+include('db.php');
 
 // Check if the user is logged in (This is just a simple check; adjust as needed for your app)
 $is_logged_in = isset($_SESSION['user_id']) ? true : false;
