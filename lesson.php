@@ -207,7 +207,7 @@ if (isset($_GET['id'])) {
             <p><b>Status:</b> <?php echo htmlspecialchars($article['status']); ?></p>
             <hr>
             <p><?php echo nl2br(htmlspecialchars($article['content'])); ?></p>
-            <a href="home.php" class="back-btn">Back to Home</a>
+            <a href="index.php" class="back-btn">Back to Home</a>
         </div>
     </div>
 
