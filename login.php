@@ -1,5 +1,26 @@
+<?php
+session_start(); // Start the session
+
+// Assuming you have a simple form of user authentication (you can replace this with your database checks)
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Replace these with actual credentials check (e.g., from the database)
+    $valid_email = 'user@example.com';
+    $valid_password = 'password123';
+
+    // Check if the entered credentials match
+    if ($_POST['email'] == $valid_email && $_POST['password'] == $valid_password) {
+        $_SESSION['user_id'] = 1; // Store the user ID in the session (this can be dynamically assigned)
+        header("Location: project.php"); // Redirect to home page after successful login
+        exit();
+    } else {
+        $error_message = "Invalid email or password.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +32,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
         }
 
         .login-card {
@@ -56,13 +77,25 @@
         .login-footer a:hover {
             text-decoration: underline;
         }
+
+        .alert {
+            margin-top: 20px;
+        }
     </style>
 </head>
+
 <body>
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="login-card">
             <h3 class="mb-4">Login</h3>
-            <form action="register.php" method="post"> <!-- This line is changed -->
+            <!-- Display an error message if the login fails -->
+            <?php if (isset($error_message)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $error_message; ?>
+                </div>
+            <?php endif; ?>
+
+            <form action="login.php" method="post">
                 <div class="form-group mb-3">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
@@ -75,13 +108,15 @@
                 <div class="login-footer mt-3">
                     <small>Don't have an account? <a href="register.php">Register here</a></small>
                     <br>
-                    <a href="project.php">HOME</a>
+                    <a href="index.php">Back to Home</a>
                 </div>
             </form>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
