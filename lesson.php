@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
         // Article not found, we display a hard-coded article about the Portuguese
         $article = [
             'title' => 'The Arrival of the Portuguese',
-            'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/0/0f/Vasco_da_Gama_1.jpg',  // Image URL for Vasco da Gama
+            'image_url' => 'https://www.greenholidaytravels.com/wp-content/uploads/2019/08/Trinco-Fort.jpg',  // New image for Trinco Fort
             'era' => '15th Century',
             'level' => 'Advanced',
             'status' => 'Historical',
