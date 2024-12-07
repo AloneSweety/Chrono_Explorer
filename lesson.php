@@ -7,12 +7,14 @@ $lessons = [
     [
         'title' => 'The First Encounter',
         'duration' => '30 min',
-        'icon' => 'lni lni-video'
+        'icon' => 'lni lni-video',
+        'video_url' => 'https://www.youtube.com/embed/example1' // Replace with actual video URL
     ],
     [
         'title' => 'Portuguese Influence on Trade',
         'duration' => '45 min',
-        'icon' => 'lni lni-users'
+        'icon' => 'lni lni-users',
+        'video_url' => 'https://www.youtube.com/embed/example2' // Replace with actual video URL
     ],
     [
         'title' => 'Quiz: Portuguese Influence',
@@ -21,7 +23,8 @@ $lessons = [
     ],
     [
         'title' => 'Portuguese Military and Political Control',
-        'duration' => '60 min'
+        'duration' => '60 min',
+        'video_url' => 'https://www.youtube.com/embed/example3' // Replace with actual video URL
     ],
     [
         'title' => 'Quiz: Key Figures of the Portuguese Period',
@@ -30,7 +33,8 @@ $lessons = [
     ],
     [
         'title' => 'Legacy of the Portuguese in Sri Lanka',
-        'duration' => '30 min'
+        'duration' => '30 min',
+        'video_url' => 'https://www.youtube.com/embed/example4' // Replace with actual video URL
     ]
 ];
 ?>
@@ -44,133 +48,17 @@ $lessons = [
     <title><?php echo htmlspecialchars($page_title); ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff; /* Light blue background */
-            color: #333;
-            line-height: 1.6;
+        /* Add previous CSS styles here */
+        .video-container {
+            margin-top: 15px;
         }
 
-        .breadcrumbs.overlay {
-            background: linear-gradient(90deg, #4e95ff, #ff9f43);
-            color: #fff;
-            padding: 60px 0;
-            text-align: center;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .breadcrumbs-content h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .breadcrumbs-content p {
-            font-size: 1.2rem;
-            margin: 10px 0 20px;
-            opacity: 0.9;
-        }
-
-        .breadcrumb-nav {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .breadcrumb-nav li {
-            display: inline-block;
-            margin: 0 5px;
-        }
-
-        .breadcrumb-nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .breadcrumb-nav a:hover {
-            color: #ffe066;
-        }
-
-        .course-details {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            background-color: #4e95ff;
-            color: #fff;
-            padding: 15px 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .section-header h5 {
-            margin: 0;
-            font-size: 1.8rem;
-        }
-
-        .section-content {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .course-item {
-            background: #fff;
-            margin-bottom: 20px;
+        iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
             border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .course-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .course-item .item-name {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #4e95ff;
-        }
-
-        .course-item-meta {
-            font-size: 0.9rem;
-            text-align: right;
-        }
-
-        .course-item-meta span {
-            display: block;
-            margin: 5px 0;
-            color: #555;
-        }
-
-        .footer.style2 {
-            background: #2d3436;
-            color: #dfe6e9;
-            padding: 30px 0;
-            text-align: center;
-        }
-
-        .footer.style2 a {
-            color: #ffe066;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .footer.style2 a:hover {
-            color: #ff9f43;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -204,6 +92,11 @@ $lessons = [
                             <i class="<?php echo htmlspecialchars($lesson['icon']); ?>"></i>
                         <?php endif; ?>
                     </div>
+                    <?php if (isset($lesson['video_url'])): ?>
+                        <div class="video-container">
+                            <iframe src="<?php echo htmlspecialchars($lesson['video_url']); ?>" allowfullscreen></iframe>
+                        </div>
+                    <?php endif; ?>
                 </li>
             <?php endforeach; ?>
         </ul>
