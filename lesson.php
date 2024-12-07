@@ -21,8 +21,15 @@ if (isset($_GET['id'])) {
     if (mysqli_num_rows($result) > 0) {
         $article = mysqli_fetch_assoc($result);
     } else {
-        echo "Article not found!";
-        exit();
+        // Article not found, we display a hard-coded article about the Portuguese
+        $article = [
+            'title' => 'The Arrival of the Portuguese',
+            'image_url' => 'https://upload.wikimedia.org/wikipedia/commons/0/0f/Vasco_da_Gama_1.jpg',  // Image URL for Vasco da Gama
+            'era' => '15th Century',
+            'level' => 'Advanced',
+            'status' => 'Historical',
+            'content' => "The arrival of the Portuguese in Asia marks a significant turning point in world history. In the early 16th century, Portugal, a small but ambitious maritime nation, set out to expand its influence and trade routes across the globe. This expansion was driven by the search for new trading opportunities, particularly for spices, which were highly sought after in Europe.\n\nIn 1498, the Portuguese navigator Vasco da Gama successfully reached the shores of India, opening the sea route from Europe to Asia around the southern tip of Africa. His voyage to the Indian Ocean not only marked the beginning of the Portuguese colonial empire in Asia but also laid the foundation for an era of European exploration and dominance in the region.\n\nThe Portuguese landed on the Indian subcontinent in Calicut (present-day Kozhikode) on the southwestern coast of India. Vasco da Gama's arrival was met with initial enthusiasm, as the Portuguese offered protection to local rulers in exchange for trading privileges. In 1510, the Portuguese seized the strategic port of Goa, which would later become the capital of their Asian empire.\n\nGoa became a vital trading hub for the Portuguese, allowing them to control the spice trade between India, Europe, and the Far East. The Portuguese also introduced new technologies, including cannonry and navigation techniques, which had lasting impacts on regional warfare and maritime practices.\n\nThe Portuguese presence in India and Asia was not without controversy. While they established important trading posts and spread Christianity, they also engaged in colonial exploitation and military conflicts with local rulers and other European powers, including the Dutch and the British. The legacy of the Portuguese in India can still be seen in the architecture, culture, and religion of Goa, where Portuguese influence remained strong until its annexation by India in 1961.\n\nToday, the arrival of the Portuguese is considered a pivotal event in the Age of Discovery and the history of European colonization. It reshaped global trade, culture, and geopolitics, laying the foundation for future European imperial ventures in Asia."
+        ];
     }
 } else {
     echo "No article selected!";
@@ -38,181 +45,76 @@ if (isset($_GET['id'])) {
     <title><?php echo htmlspecialchars($article['title']); ?> - Chrono Explorer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* Full Page Background */
         body {
-            font-family: 'Arial', sans-serif;
-            background-image: url('path/to/your/background-image.jpg'); /* Background Image */
-            background-size: cover;
-            background-position: center;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
-
-        /* Overlay for background to improve text visibility */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Black overlay with transparency */
-            z-index: -1; /* Places the overlay behind content */
+        .container {
+            margin-top: 30px;
         }
-
-        /* Header Style */
         .header {
-            background-image: url('path/to/your/header-image.jpg'); /* Optional Header Image */
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 60px 0;
+            background-color: #4a2c2c;
+            color: #fff;
+            padding: 20px;
             text-align: center;
-            margin-bottom: 30px;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
         }
-
         .header h1 {
             font-size: 3rem;
-            font-weight: bold;
         }
-
-        .header p {
-            font-size: 1.5rem;
-            font-style: italic;
-        }
-
-        .header-buttons {
-            margin-top: 20px;
-        }
-
-        .btn-login, .btn-signup {
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-size: 1.2rem;
-        }
-
-        .btn-login {
-            background-color: #00bcd4;
-            color: white;
-            border: none;
-        }
-
-        .btn-signup {
-            background-color: #ff5722;
-            color: white;
-            border: none;
-        }
-
-        .btn-login:hover {
-            background-color: #008c9e;
-        }
-
-        .btn-signup:hover {
-            background-color: #e64a19;
-        }
-
-        /* Article Content Styling */
         .article-detail {
-            background-color: white;
-            padding: 30px;
+            background-color: #fff;
+            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 40px;
-            background-image: url('path/to/your/article-background.jpg'); /* Optional background for the article */
-            background-size: cover;
-            background-position: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
+        .article-detail h2 {
+            font-size: 2rem;
+            color: #4a2c2c;
+        }
         .article-detail img {
             width: 100%;
+            max-height: 400px;
+            object-fit: cover;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .article-detail h2 {
-            font-size: 2.5rem;
-            color: #00bcd4;
             margin-bottom: 20px;
-            text-align: center;
         }
-
         .article-detail p {
             font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #555;
         }
-
-        .article-detail hr {
-            margin: 30px 0;
-            border: 1px solid #ddd;
+        .article-detail .btn-secondary {
+            background-color: #4a2c2c;
+            border: none;
         }
-
-        .back-btn {
-            background-color: #00bcd4;
-            color: white;
-            border-radius: 5px;
-            padding: 12px 25px;
-            text-decoration: none;
-            font-size: 1.1rem;
-        }
-
-        .back-btn:hover {
-            background-color: #008c9e;
-        }
-
-        @media (max-width: 767px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .article-detail {
-                padding: 20px;
-            }
-
-            .article-detail h2 {
-                font-size: 1.6rem;
-            }
+        .article-detail .btn-secondary:hover {
+            background-color: #3a2323;
         }
     </style>
 </head>
 <body>
 
-    <div class="overlay"></div> <!-- Overlay for background image -->
-
-    <div class="container">
-        <div class="header">
-            <h1>Chrono Explorer</h1>
-            <p><em>Walk Through the Past</em></p>
-            <div class="header-buttons">
-                <?php if (!isset($_SESSION['user_id'])): ?>
-                    <a href="login.php" class="btn btn-login">Log In</a>
-                    <a href="register.php" class="btn btn-signup">Sign Up</a>
-                <?php else: ?>
-                    <a href="dashboard.php" class="btn btn-login">Dashboard</a>
-                    <a href="logout.php" class="btn btn-signup">Logout</a>
-                <?php endif; ?>
-            </div>
-        </div>
-
-        <div class="article-detail">
-            <h2><?php echo htmlspecialchars($article['title']); ?></h2>
-            <img src="<?php echo htmlspecialchars($article['image_url']); ?>" alt="Article Image">
-            <p><b>Era:</b> <?php echo htmlspecialchars($article['era']); ?></p>
-            <p><b>Level:</b> <?php echo htmlspecialchars($article['level']); ?></p>
-            <p><b>Status:</b> <?php echo htmlspecialchars($article['status']); ?></p>
-            <hr>
-            <p><?php echo nl2br(htmlspecialchars($article['content'])); ?></p>
-            <a href="index.php" class="back-btn">Back to Home</a>
-        </div>
+<div class="container">
+    <div class="header">
+        <h1>Chrono Explorer</h1>
+        <p><em>Walk Through the Past</em></p>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div class="article-detail">
+        <h2><?php echo htmlspecialchars($article['title']); ?></h2>
+        <img src="<?php echo htmlspecialchars($article['image_url']); ?>" alt="Article Image">
+        <p><strong>Era:</strong> <?php echo htmlspecialchars($article['era']); ?></p>
+        <p><strong>Level:</strong> <?php echo htmlspecialchars($article['level']); ?></p>
+        <p><strong>Status:</strong> <?php echo htmlspecialchars($article['status']); ?></p>
+        <hr>
+        <p><?php echo nl2br(htmlspecialchars($article['content'])); ?></p>
+        <a href="home.php" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
