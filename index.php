@@ -1,3 +1,10 @@
+<?php
+session_start(); // Start the session to manage user login state
+
+// Check if the user is logged in
+$isLoggedIn = isset($_SESSION['user_id']); // If there's a session variable 'user_id', the user is logged in
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,24 +48,24 @@
 
         /* Log In button color */
         .btn-login {
-            background-color: #4ae2e2;  /* Blue */
+            background-color: #4ae2e2;
             color: white;
             border: none;
         }
 
         .btn-login:hover {
-            background-color: #357ab7;  /* Darker Blue */
+            background-color: #357ab7;
         }
 
         /* Sign Up button color */
         .btn-signup {
-            background-color: #e94e77;  /* Pink */
+            background-color: #e94e77;
             color: white;
             border: none;
         }
 
         .btn-signup:hover {
-            background-color: #d43660;  /* Darker Pink */
+            background-color: #d43660;
         }
 
         .image-section {
@@ -165,8 +172,13 @@
             <h1>Chrono Explorer</h1>
             <p><em>Walk Through the Past</em></p>
             <div class="header-buttons">
-                <a href="login.php" class="btn btn-login">Log In</a>
-                <a href="register.php" class="btn btn-signup">Sign Up</a>
+                <?php if (!$isLoggedIn): ?>
+                    <a href="login.php" class="btn btn-login">Log In</a>
+                    <a href="register.php" class="btn btn-signup">Sign Up</a>
+                <?php else: ?>
+                    <a href="dashboard.php" class="btn btn-login">Dashboard</a>
+                    <a href="logout.php" class="btn btn-signup">Logout</a>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -184,9 +196,9 @@
                     <h3><b>1658</b></h3>
                 </div>
                 <div class="timeline-item">
-                    <h3><b>1796</b></h3></h3>
+                    <h3><b>1796</b></h3>
                 </div>
-                
+
                 <div class="timeline-item">
                     <h3><b>1948</b></h3>
                 </div>
@@ -257,11 +269,10 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
-        <div class="footer">
-            <p>&copy; 2024 Chrono Explorer. All Rights Reserved.</p>
-        </div>
+    <div class="footer">
+        <p>&copy; 2024 Chrono Explorer. All Rights Reserved.</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
