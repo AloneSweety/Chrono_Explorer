@@ -45,51 +45,113 @@ if (isset($_GET['id'])) {
     <title><?php echo htmlspecialchars($article['title']); ?> - Chrono Explorer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        /* General Body Styles */
         body {
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            padding-top: 20px;
         }
+
         .container {
-            margin-top: 30px;
+            margin-top: 50px;
         }
+
         .header {
-            background-color: #4a2c2c;
-            color: #fff;
-            padding: 20px;
+            background-color: #007bff;
+            color: white;
             text-align: center;
+            padding: 30px;
             border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+
         .header h1 {
             font-size: 3rem;
+            margin-bottom: 10px;
         }
+
+        .header p {
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
         .article-detail {
             background-color: #fff;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
         }
+
         .article-detail h2 {
-            font-size: 2rem;
-            color: #4a2c2c;
+            font-size: 2.5rem;
+            color: #007bff;
         }
+
         .article-detail img {
             width: 100%;
-            max-height: 400px;
+            max-height: 500px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .article-detail p {
+            font-size: 1.2rem;
+            line-height: 1.7;
             margin-bottom: 20px;
         }
-        .article-detail p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #555;
+
+        .article-detail b {
+            color: #007bff;
         }
+
         .article-detail .btn-secondary {
-            background-color: #4a2c2c;
+            background-color: #28a745;
             border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border-radius: 5px;
         }
+
         .article-detail .btn-secondary:hover {
-            background-color: #3a2323;
+            background-color: #218838;
+            text-decoration: none;
+        }
+
+        /* Button styles in the header */
+        .header-buttons a {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+            font-size: 1.1rem;
+        }
+
+        .header-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        .back-btn {
+            background-color: #6c757d;
+        }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+
+        /* Styling for small screens */
+        @media (max-width: 767px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            .article-detail h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -99,6 +161,15 @@ if (isset($_GET['id'])) {
     <div class="header">
         <h1>Chrono Explorer</h1>
         <p><em>Walk Through the Past</em></p>
+        <div class="header-buttons">
+            <?php if (!isset($_SESSION['user_id'])): ?>
+                <a href="login.php" class="btn btn-login">Log In</a>
+                <a href="register.php" class="btn btn-signup">Sign Up</a>
+            <?php else: ?>
+                <a href="dashboard.php" class="btn btn-login">Dashboard</a>
+                <a href="logout.php" class="btn btn-signup">Logout</a>
+            <?php endif; ?>
+        </div>
     </div>
 
     <div class="article-detail">
@@ -109,12 +180,13 @@ if (isset($_GET['id'])) {
         <p><strong>Status:</strong> <?php echo htmlspecialchars($article['status']); ?></p>
         <hr>
         <p><?php echo nl2br(htmlspecialchars($article['content'])); ?></p>
-        <a href="home.php" class="btn btn-secondary">Back to Home</a>
+        <a href="home.php" class="btn btn-secondary back-btn">Back to Home</a>
     </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
