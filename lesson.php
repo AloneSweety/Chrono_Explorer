@@ -38,14 +38,34 @@ if (isset($_GET['id'])) {
     <title><?php echo htmlspecialchars($article['title']); ?> - Chrono Explorer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        /* Full Page Background */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0f4f8;
+            background-image: url('path/to/your/background-image.jpg'); /* Background Image */
+            background-size: cover;
+            background-position: center;
             color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* Overlay for background to improve text visibility */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Black overlay with transparency */
+            z-index: -1; /* Places the overlay behind content */
+        }
+
+        /* Header Style */
         .header {
-            background-image: url('path/to/your/header-image.jpg'); /* Add your header image */
+            background-image: url('path/to/your/header-image.jpg'); /* Optional Header Image */
             background-size: cover;
             background-position: center;
             color: white;
@@ -96,6 +116,7 @@ if (isset($_GET['id'])) {
             background-color: #e64a19;
         }
 
+        /* Article Content Styling */
         .article-detail {
             background-color: white;
             padding: 30px;
@@ -160,6 +181,8 @@ if (isset($_GET['id'])) {
     </style>
 </head>
 <body>
+
+    <div class="overlay"></div> <!-- Overlay for background image -->
 
     <div class="container">
         <div class="header">
