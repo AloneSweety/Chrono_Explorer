@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
         // Article not found, we display a hard-coded article about the Portuguese
         $article = [
             'title' => 'The Arrival of the Portuguese',
-            'image_url' => 'https://www.greenholidaytravels.com/wp-content/uploads/2019/08/Trinco-Fort.jpg',  // New image for Trinco Fort
+            'image_url' => 'https://ceylonguide.b-cdn.net/wp-content/uploads/2020/06/03.jpg', // Updated image URL
             'era' => '15th Century',
             'level' => 'Advanced',
             'status' => 'Historical',
@@ -121,7 +121,6 @@ if (isset($_GET['id'])) {
             text-decoration: none;
         }
 
-        /* Button styles in the header */
         .header-buttons a {
             background-color: #007bff;
             color: white;
@@ -144,7 +143,6 @@ if (isset($_GET['id'])) {
             background-color: #5a6268;
         }
 
-        /* Styling for small screens */
         @media (max-width: 767px) {
             .header h1 {
                 font-size: 2.5rem;
