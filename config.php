@@ -1,13 +1,11 @@
 <?php
-// config.php
-
-define('DB_SERVER', 'localhost');  // MySQL server (localhost if running locally)
-define('DB_USERNAME', 'root');     // MySQL username (default is usually 'root')
-define('DB_PASSWORD', '');         // MySQL password (empty by default for local installations)
-define('DB_DATABASE', 'chrono_explorer');  // Database name
+$servername = "localhost"; // or your DB host
+$username = "root";        // your DB username
+$password = "";            // your DB password
+$dbname = "chrono_explorer"; // your DB name
 
 // Create connection
-$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
