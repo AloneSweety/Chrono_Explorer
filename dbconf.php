@@ -5,7 +5,7 @@ $password = "mariadb";            // your DB password
 $dbname = "chrono_explorer"; // your DB name
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$connect = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
