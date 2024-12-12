@@ -19,7 +19,7 @@ try{
 		foreach($col as $value){
 			//return object
 			//print_r($value)
-			echo "<td>$value->name</td>";
+			echo "<td>$value->email</td>";
 		}
 		echo "</td>";
 
