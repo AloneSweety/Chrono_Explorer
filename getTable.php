@@ -1,23 +1,43 @@
 <?php
-// Set the database connection file
-require_once 'dbconf.php';
+//set the db connection file
+require_once 'database.php';
 
-try {
-    // Query
-    $sql = "SELECT * FROM users"; // Make sure the table name is correct
+try{
+	//Query
+	$sql = "SELECT * FROM users";
 
-    // Execute the query
-    $result = mysqli_query($connect, $sql);
+	//execute the query
+	$result = mysqli_query($connect,$sql);
 
-    // Check if data exists in the table
-    if (mysqli_num_rows($result) > 0) {
-        // Fetch the data from rows
-        while ($row = mysqli_fetch_assoc($result)) {
-            print_r($row); // Display the fetched data
-        }
-    } else {
-        echo "No results found.";
-    }
-} catch (Exception $e) {
-    die("Error: " . $e->getMessage()); // Handle exceptions gracefully
+	//check if data exists in the table
+	if(mysqli_num_rows($result)>0){
+		//fetch the data from rows
+		echo "<table border=1>";
+		$col = mysqli_fetch_fields($result);
+		//print the columns
+		echo "<tr>";
+		foreach($col as $value){
+			//return object
+			//print_r($value)
+			echo "<td>$value->name</td>";
+		}
+		echo "</td>";
+
+		while($row = mysqli_fetch_assoc($result)){
+			//print the data in a table form
+			echo "<tr>";
+			foreach($row as $key => $value){
+				echo "<td>$value</td>";
+			}
+			echo "</tr>";
+		}
+		echo "</table>";
+	}
+	else{
+		echo "No result";
+	}
 }
+catch(Exception $e){
+	die($e->getMessage());
+}
+?>
