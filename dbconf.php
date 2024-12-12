@@ -8,7 +8,7 @@ $dbname = "chrono_explorer"; // your DB name
 $connect = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
-if ($conn->connect_error) {
+if ($connect->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 ?>
