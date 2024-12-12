@@ -70,6 +70,7 @@ $lessons = [
         .breadcrumbs h1 {
             font-size: 2.5rem;
             margin: 0;
+            color: #ff5733; 
         }
 
         .breadcrumbs p {
