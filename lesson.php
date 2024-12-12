@@ -53,7 +53,7 @@ $lessons = [
             margin: 0;
             padding: 0;
             background-color:rgb(249, 249, 249);
-            color: #333;
+            color: red;
             line-height: 1.6;
         }
 
