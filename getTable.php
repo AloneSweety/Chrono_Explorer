@@ -1,6 +1,6 @@
 <?php
 //set the db connection file
-require_once 'database.php';
+require_once 'dbconf.php';
 
 try{
 	//Query
