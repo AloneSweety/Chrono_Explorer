@@ -1,8 +1,8 @@
 <?php
-$servername = "127.0.0.1:3306"; // or your DB host
-$username = "root";        // your DB username
-$password = "mariadb";            // your DB password
-$dbname = "chrono_explorer"; // your DB name
+$servername = "127.0.0.1:3306"; 
+$username = "root";       
+$password = "mariadb";            
+$dbname = "chrono_explorer"; 
 
 // Create connection
 $connect = new mysqli($servername, $username, $password, $dbname);
