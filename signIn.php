@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'dbconf.php';
 
 if (isset($_POST['login'])) {
@@ -14,6 +15,7 @@ if (isset($_POST['login'])) {
 
         // Verify the password
         if (password_verify($password, $hashedPassword)) {
+            $_SESSION['email'] = $row['email'];
             header("Location: lesson.php");
             exit; 
         } else {
