@@ -1,23 +1,3 @@
-<?php
-session_start(); // Start the session
-
-// Assuming you have a simple form of user authentication (you can replace this with your database checks)
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Replace these with actual credentials check (e.g., from the database)
-    $valid_email = 'user@example.com';
-    $valid_password = 'password123';
-
-    // Check if the entered credentials match
-    if ($_POST['email'] == $valid_email && $_POST['password'] == $valid_password) {
-        $_SESSION['user_id'] = 1; // Store the user ID in the session (this can be dynamically assigned)
-        header("Location: project.php"); // Redirect to home page after successful login
-        exit();
-    } else {
-        $error_message = "Invalid email or password.";
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             <?php endif; ?>
 
-            <form action="login.php" method="post">
+            <form action="signIn.php" method="post">
                 <div class="form-group mb-3">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
@@ -104,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <button type="submit" class="btn btn-primary w-100" name="login">Login</button>
                 <div class="login-footer mt-3">
                     <small>Don't have an account? <a href="register.php">Register here</a></small>
                     <br>
