@@ -1,22 +1,3 @@
-<?php
-session_start(); // Start the session
-
-// Handle the form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Dummy validation and user data (You should replace this with database logic)
-    $valid_email = $_POST['email'];
-    $valid_password = $_POST['password'];
-
-    // Here you would typically insert the data into your database
-    // For simplicity, let's assume the registration is always successful
-    $_SESSION['user_id'] = 1; // Assign a dummy user ID (in reality, this would come from the database)
-    
-    // After successful registration, redirect to home page
-    header("Location: project.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h3 class="mb-4">Sign Up</h3>
             
             <!-- Registration Form -->
-            <form action="register.php" method="post">
+            <form action="signup.php" method="post">
                 <div class="form-group mb-3">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
